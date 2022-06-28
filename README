@@ -1,0 +1,31 @@
+#Interactome Filter
+
+A script to map genes from a tissue in a interactome. This can be used to highlight differences among genes expressed in different tissues using a *general* interactome. 
+
+Data for expression of genes in specific tissues can be downloaded from sources as the Human Protein Atlas (HPA). Their datasets include RNAseq data for several tissues with normalised values (NX).
+
+##Requirements
+ python (3.5 or above) and numpy[https://numpy.org/install/] 
+##Usage 
+ The script requires at least two arguments: 
+ 
+ - Interactome file formatted as a list of edges
+ - Tissue expression file with genes in the first column and their expression value in the second column
+ 
+ The program considers a gene is expressed if it has an expression value greater-or-equal 1. Genes with an expression value below won't appear in the filtered interactome. This value can be changed using option *--cutoff*
+ 
+		python3 interactome_filter.py interactome_file tissue-expression_file -o tissue-interactome_expression.tsv
+
+	Check the *Example* section to see a case of use
+
+##Example
+Filter a general interactome using the expressed genes from the tissues found in the *RNA HPA tissue gene data* file from the Human Protein Atlas[https://www.proteinatlas.org/about/download] (*rna_tissue_hpa.tsv.zip*).
+The general interactome used in this example was downloaded from BioGrid[https://downloads.thebiogrid.org/BioGRID] and only includes physical interactions of human proteins.
+
+The file downloaded from the HPA includes one single TSV with some expression values for all tissues. Here, *gen_tissue-expression_files.sh* is used to generate the files in the format that is expecting the python script (two columns with genes and expression values for a single tissue or cell).
+
+		bash gen_tissue-expression_files.sh rna_tissue_hpa.tsv.zip tissue-filtered_interactomes/
+
+		python3 interactome_filter.py biogrid_hsa-oss_phys.tsv.gz adipose_tissue.tsv -o biogrid_hsa-oss_phys_adipose_tissue.tsv
+
+###References
