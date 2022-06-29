@@ -1,5 +1,5 @@
 # Interactome Filter
-A script remove from a *general interactome* specific genes (nodes) based on their expression value. This can be used to highlight differences among genes expressed in different tissues or cell types.
+A script to remove from a *general interactome* specific genes (nodes) based on their expression value. This can be used to highlight differences among genes expressed in different tissues or cell types.
 
 Data of gene expression can be downloaded from the Human Protein Atlas (HPA). Their datasets include expression levels of genes based on RNA-seq: TPM, pTPM and nTPM ([normalized expression](https://www.proteinatlas.org/about/assays+annotation#normalization_rna), NX).
 
